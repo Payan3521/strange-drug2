@@ -1,0 +1,71 @@
+{
+    // Use IntelliSense para saber los atributos posibles.
+    // Mantenga el puntero para ver las descripciones de los existentes atributos.
+    // Para más información, visite: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "ComprasApplication",
+            "request": "launch",
+            "mainClass": "com.microservicefour.compras.ComprasApplication",
+            "projectName": "compras"
+        },
+        {
+            "type": "java",
+            "name": "EurekaApplication",
+            "request": "launch",
+            "mainClass": "com.eureka.eureka.EurekaApplication",
+            "projectName": "eureka"
+        },
+        {
+            "type": "java",
+            "name": "GatewayApplication",
+            "request": "launch",
+            "mainClass": "com.gateway.gateway.GatewayApplication",
+            "projectName": "gateway"
+        },
+        {
+            "type": "java",
+            "name": "LoginApplication",
+            "request": "launch",
+            "mainClass": "com.microservicesix.login.LoginApplication",
+            "projectName": "login"
+        },
+        {
+            "type": "java",
+            "name": "NotificacionesApplication",
+            "request": "launch",
+            "mainClass": "com.microservicetwo.notificaciones.NotificacionesApplication",
+            "projectName": "notificaciones"
+        },
+        {
+            "type": "java",
+            "name": "PagosApplication",
+            "request": "launch",
+            "mainClass": "com.microservicefive.pagos.PagosApplication",
+            "projectName": "pagos"
+        },
+        {
+            "type": "java",
+            "name": "UsersApplication",
+            "request": "launch",
+            "mainClass": "com.microserviceone.users.UsersApplication",
+            "projectName": "users"
+        },
+        {
+            "type": "java",
+            "name": "VideosApplication",
+            "request": "launch",
+            "mainClass": "com.microservicethree.videos.VideosApplication",
+            "projectName": "videos"
+        }
+    ]
+}
