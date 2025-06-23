@@ -26,8 +26,8 @@ public class Customer extends User{
     }
 
     public Customer(Long id, String name, String lastName, String email, String password, 
-                   String phone, LocalDate birthDate){
-        super(id, name, lastName, email, password, phone, UserRole.CUSTOMER);
+                   String phone, LocalDate birthDate, boolean verifiedCode, boolean verifiedTerm){
+        super(id, name, lastName, email, password, phone, UserRole.CUSTOMER, verifiedCode, verifiedTerm);
         this.birthDate = Objects.requireNonNull(birthDate, "Birth date avion be null");
     }
 

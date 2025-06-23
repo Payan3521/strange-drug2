@@ -48,7 +48,7 @@ public class UserMapper {
             loggingService.logError("UserMapper: Error al convertir dominio a entidad - Email: {}", user.getEmail(), e);
             throw e;
         }
-    }
+    } 
 
     public User toDomain(UserEntity entity) {
         try {
@@ -64,7 +64,9 @@ public class UserMapper {
                         customerEntity.getEmail(),
                         customerEntity.getPassword(),
                         customerEntity.getPhone(),
-                        customerEntity.getBirthDate()
+                        customerEntity.getBirthDate(),
+                        customerEntity.isVerifiedCode(),
+                        customerEntity.isVerifiedTerm()
                 );
                 
                 loggingService.logDebug("UserMapper: CustomerEntity convertido a Customer - ID: {}, Email: {}, Fecha nacimiento: {}", 
@@ -80,7 +82,9 @@ public class UserMapper {
                         adminEntity.getEmail(),
                         adminEntity.getPassword(),
                         adminEntity.getPhone(),
-                        adminEntity.getArea()
+                        adminEntity.getArea(),
+                        adminEntity.isVerifiedCode(),
+                        adminEntity.isVerifiedTerm()
                 );
                 
                 loggingService.logDebug("UserMapper: AdminEntity convertido a Admin - ID: {}, Email: {}, Área: {}", 
@@ -109,6 +113,8 @@ public class UserMapper {
             entity.setPassword(domain.getPassword());
             entity.setPhone(domain.getPhone());
             entity.setRol(domain.getRol().name());
+            entity.setVerifiedCode(domain.isVerifiedCode());
+            entity.setVerifiedTerm(domain.isVerifiedTerm());
             
             loggingService.logDebug("UserMapper: Campos comunes mapeados exitosamente - Email: {}, Rol: {}", 
                 domain.getEmail(), domain.getRol().name());
