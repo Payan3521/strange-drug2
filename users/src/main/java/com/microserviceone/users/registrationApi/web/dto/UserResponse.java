@@ -9,7 +9,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @SuperBuilder
 public class UserResponse {
-    private Long id;
+    private Long id; 
     private String name;
     private String lastName;
     private String email;
@@ -18,4 +18,6 @@ public class UserResponse {
     private String rol;
     private LocalDate birthDate; // Only for customers
     private String area; // Only for admins
+    private boolean verifiedCode;
+    private boolean verifiedTerm;
 }

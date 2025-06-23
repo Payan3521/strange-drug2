@@ -44,6 +44,12 @@ public class UserEntity {
     protected String phone;
 
     @Column(name = "rol", nullable = false)
-    protected String rol;
+    protected String rol; 
+
+    @Column(name = "verified_code", nullable = false)
+    protected boolean verifiedCode;
+
+    @Column(name = "verified_term", nullable = false)
+    protected boolean verifiedTerm;
 
 }

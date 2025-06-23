@@ -29,6 +29,9 @@ public class RegistrationWebMapper {
                 request.getPhone(),
                 request.getBirthDate()
             );
+
+            customer.verifyCode();
+            customer.verifyTerm();
             
             loggingService.logDebug("Customer mapeado exitosamente - Email: {}, Edad: {} años", 
                 customer.getEmail(), customer.getAge());
@@ -78,6 +81,8 @@ public class RegistrationWebMapper {
             response.setEmail(user.getEmail());
             response.setPhone(user.getPhone());
             response.setRol(user.getRol().name());
+            response.setVerifiedCode(user.isVerifiedCode());
+            response.setVerifiedTerm(user.isVerifiedTerm());
             
             // Set specific fields based on user type
             if (user instanceof Customer) {

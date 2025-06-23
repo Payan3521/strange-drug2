@@ -17,8 +17,8 @@ public class Admin extends User{
     }
 
     public Admin(Long id, String name, String lastName, String email, String password, 
-                String phone, String area) {
-        super(id, name, lastName, email, password, phone,UserRole.ADMIN);
+                String phone, String area, boolean verifiedCode, boolean verifiedTerm) {
+        super(id, name, lastName, email, password, phone,UserRole.ADMIN, verifiedCode, verifiedTerm);
         this.area = Objects.requireNonNull(area, "Area cannot be null");
     }
 
