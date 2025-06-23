@@ -130,7 +130,7 @@ public class TermController {
         @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Error interno del servidor")
     })
     @RateLimit(key = "terms_verify_by_email", maxRequests = 5, description = "Verificar todos los términos por email - 5 solicitudes por minuto")
-    @GetMapping("/verify/")
+    @GetMapping("/verify/email")
     public ResponseEntity<ApiResponse<Void>> verifyAllTermsByEmail(@RequestParam(required = true) String email) {
         termsService.verifyAllTermsAccepted(email);
         return ResponseEntity.ok(ApiResponse.success("Todos los términos han sido aceptados"));
