@@ -58,8 +58,8 @@ public class TermController {
         @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Error interno del servidor")
     })
     @RateLimit(key = "terms_get_by_type", maxRequests = 20, description = "Obtener término por tipo - 20 solicitudes por minuto")
-    @GetMapping("/type/{type}")
-    public ResponseEntity<ApiResponse<TermResponse>> getActiveTermByType(@PathVariable String type) {
+    @GetMapping("/type")
+    public ResponseEntity<ApiResponse<TermResponse>> getActiveTermByType(@RequestParam(required = true) String type) {
         return termsService.getActiveTermByType(type)
         .map(term -> ResponseEntity.ok(ApiResponse.success("Term retrieved successfully", termWebMapper.toResponse(term))))
         .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND)
@@ -113,10 +113,10 @@ public class TermController {
         @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Error interno del servidor")
     })
     @RateLimit(key = "terms_verify_acceptance", maxRequests = 5, description = "Verificar aceptación de término - 5 solicitudes por minuto")
-    @GetMapping("/verify/{userId}/{termId}")
+    @GetMapping("/verify")
     public ResponseEntity<ApiResponse<Boolean>> verifyAcceptance(
-            @PathVariable Long userId,
-            @PathVariable Long termId) {
+            @RequestParam(required = true) Long userId,
+            @RequestParam(required = true) Long termId) {
         
         boolean hasAccepted = termsService.hasAcceptedTerm(userId, termId);
         return ResponseEntity.ok(ApiResponse.success("Verification completed", hasAccepted));
@@ -130,8 +130,8 @@ public class TermController {
         @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Error interno del servidor")
     })
     @RateLimit(key = "terms_verify_by_email", maxRequests = 5, description = "Verificar todos los términos por email - 5 solicitudes por minuto")
-    @GetMapping("/verify/email/{email}")
-    public ResponseEntity<ApiResponse<Void>> verifyAllTermsByEmail(@PathVariable String email) {
+    @GetMapping("/verify/")
+    public ResponseEntity<ApiResponse<Void>> verifyAllTermsByEmail(@RequestParam(required = true) String email) {
         termsService.verifyAllTermsAccepted(email);
         return ResponseEntity.ok(ApiResponse.success("Todos los términos han sido aceptados"));
     }  
