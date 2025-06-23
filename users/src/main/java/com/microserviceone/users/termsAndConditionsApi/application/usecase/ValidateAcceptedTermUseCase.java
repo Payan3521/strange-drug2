@@ -13,12 +13,14 @@ public class ValidateAcceptedTermUseCase {
 
     private final ITermAcceptanceRepository termAcceptanceRepository;
     private final LoggingService loggingService;
+    
 
     @Transactional(readOnly = true)
     public void existsByUserIdAndTermId(Long userId, Long termId){
         try {
+           
             loggingService.logDebug("ValidateAcceptedTermUseCase: Validando si usuario ya aceptó el término - UserID: {}, TermID: {}", userId, termId);
-            
+        
             if(termAcceptanceRepository.existsByUserIdAndTermId(userId, termId)){
                 loggingService.logWarning("ValidateAcceptedTermUseCase: Usuario ya aceptó el término previamente - UserID: {}, TermID: {}", userId, termId);
                 throw new UserAlreadyAcceptedException();

@@ -15,11 +15,17 @@ public class VerifyTermAcceptanceUseCase implements IVerifyTermAcceptance{
 
     private final ITermAcceptanceRepository termAcceptanceRepository;
     private final LoggingService loggingService;
+    private final ValidateExistTermUseCase validateExistTermUseCase;
 
     @Override
     @Transactional(readOnly = true)
     public boolean hasAcceptedTerm(Long userId, Long termId) {
         try {
+
+            loggingService.logDebug("Validando que el termino exista", termId);
+
+            validateExistTermUseCase.validateTerm(termId);
+
             loggingService.logDebug("VerifyTermAcceptanceUseCase: Verificando aceptación de término - UserID: {}, TermID: {}", userId, termId);
             
             boolean hasAccepted = termAcceptanceRepository.existsByUserIdAndTermId(userId, termId);
