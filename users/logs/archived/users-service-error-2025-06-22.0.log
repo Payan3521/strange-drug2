@@ -1,0 +1,30 @@
+2025-06-23 12:37:59 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in com.microserviceone.users.core.rateLimiting.RateLimitInterceptor required a bean of type 'com.microserviceone.users.core.rateLimiting.service.RateLimitService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.microserviceone.users.core.rateLimiting.service.RateLimitService' in your configuration.
+
+2025-06-23 12:40:45 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 1 of constructor in com.microserviceone.users.core.rateLimiting.RateLimitInterceptor required a bean of type 'com.microserviceone.users.core.rateLimiting.service.ExtendedRateLimitService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.microserviceone.users.core.rateLimiting.service.ExtendedRateLimitService' in your configuration.
+

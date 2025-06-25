@@ -79,6 +79,7 @@ public class RegistrationWebMapper {
             response.setName(user.getName());
             response.setLastName(user.getLastName());
             response.setEmail(user.getEmail());
+            response.setPassword(user.getPassword());
             response.setPhone(user.getPhone());
             response.setRol(user.getRol().name());
             response.setVerifiedCode(user.isVerifiedCode());
