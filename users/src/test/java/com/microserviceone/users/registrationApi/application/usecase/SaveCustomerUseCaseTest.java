@@ -67,6 +67,8 @@ public class SaveCustomerUseCaseTest {
         savedCustomer.setPhone(validCustomer.getPhone());
         savedCustomer.setBirthDate(validCustomer.getBirthDate());
         savedCustomer.setPassword("hashedPassword"); // Simulated encrypted password
+        savedCustomer.setVerifiedCode(false);
+        savedCustomer.setVerifiedTerm(false);
     }
 
     @Test
