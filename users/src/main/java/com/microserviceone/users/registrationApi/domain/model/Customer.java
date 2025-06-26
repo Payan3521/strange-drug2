@@ -36,7 +36,7 @@ public class Customer extends User{
     }
 
     public boolean isOfLegalAge() {
-        return getAge() >= MINIMUM_AGE;
+        return getAge() >= MINIMUM_AGE && !birthDate.isAfter(LocalDate.now());
     }
 
     private void validateBirthDate(LocalDate birthDate) {

@@ -16,6 +16,9 @@ public class ValidateUniqueEmailUseCase {
     private final LoggingService loggingService;
 
     public void validate(String email) {
+        if(email == null || email.isEmpty()) {
+            throw new IllegalArgumentException("Email no puede ser nulo o vacío");
+        }
         try {
             loggingService.logDebug("Validando unicidad de email: {}", email);
             
