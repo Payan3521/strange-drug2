@@ -84,7 +84,7 @@ public class TermController {
         
         return ResponseEntity.ok(ApiResponse.success("Terms accepted successfully", accepted));
     }
-
+  
     @Operation(summary = "Aceptar múltiples términos", description = "Acepta múltiples términos por sus IDs")
     @ApiResponses(value = {
         @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Términos aceptados exitosamente",

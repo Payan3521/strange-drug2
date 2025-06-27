@@ -18,6 +18,7 @@ public class JwtSecurityConfig {
 
     private final LoggingService loggingService;
     private final JwtAuthenticationFilter jwtAuthFilter;
+    private final CustomClientFilter customClientFilter;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -50,6 +51,7 @@ public class JwtSecurityConfig {
             .sessionManagement(session -> session
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             )
+            .addFilterBefore(customClientFilter, UsernamePasswordAuthenticationFilter.class)
             .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
         
         loggingService.logDebug("Configuración de seguridad completada");
