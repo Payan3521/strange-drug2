@@ -14,17 +14,13 @@ public class Admin extends User{
     public Admin(String name, String lastName, String email, String password, String phone, String area) {
         super(name, lastName, email, password, phone, UserRole.ADMIN);
         this.area = Objects.requireNonNull(area, "Area cannot be null");
+        validateArea(this.area);
     }
 
     public Admin(Long id, String name, String lastName, String email, String password, 
                 String phone, String area, boolean verifiedCode, boolean verifiedTerm) {
         super(id, name, lastName, email, password, phone,UserRole.ADMIN, verifiedCode, verifiedTerm);
         this.area = Objects.requireNonNull(area, "Area cannot be null");
-    }
-
-    @Override
-    protected void validateSpecificData() {
-        validateArea(area);
     }
 
     private void validateArea(String area) {

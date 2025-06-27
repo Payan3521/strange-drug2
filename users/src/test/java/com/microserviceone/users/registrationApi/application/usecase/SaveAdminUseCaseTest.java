@@ -19,7 +19,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import com.microserviceone.users.core.logging.LoggingService;
-import com.microserviceone.users.registrationApi.application.exception.PasswordNullOrEmptyException;
 import com.microserviceone.users.registrationApi.application.exception.UserAlreadyRegisteredException;
 import com.microserviceone.users.registrationApi.domain.model.Admin;
 import com.microserviceone.users.registrationApi.domain.port.out.IRegisterRepository;
@@ -304,14 +303,14 @@ public class SaveAdminUseCaseTest {
 
         validAdmin.setPassword("");
 
-        PasswordNullOrEmptyException emptyException = new PasswordNullOrEmptyException();
+        IllegalArgumentException emptyException = new IllegalArgumentException("Password cannot be null or empty");
 
         doNothing().when(validateUniqueEmailUseCase).validate(validAdmin.getEmail());
         // No mockees el encripter, deja que lance la excepción real
         when(passwordEncripterUseCase.encripter(validAdmin.getPassword(), validAdmin.getEmail()))
             .thenThrow(emptyException);
 
-        PasswordNullOrEmptyException exception = assertThrows(PasswordNullOrEmptyException.class, () -> {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             saveAdmin.save(validAdmin);
         });
 
@@ -324,14 +323,14 @@ public class SaveAdminUseCaseTest {
     void shouldHandleAdminWithNullPassword(){ 
         validAdmin.setPassword(null);
 
-        PasswordNullOrEmptyException nullException = new PasswordNullOrEmptyException();
+        IllegalArgumentException nullException = new IllegalArgumentException("Password cannot be null or empty");
 
         doNothing().when(validateUniqueEmailUseCase).validate(validAdmin.getEmail());
         
         when(passwordEncripterUseCase.encripter(null, validAdmin.getEmail()))
             .thenThrow(nullException);
     
-        PasswordNullOrEmptyException exception = assertThrows(PasswordNullOrEmptyException.class, () -> {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             saveAdmin.save(validAdmin);
         });
     

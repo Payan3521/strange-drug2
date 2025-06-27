@@ -1,7 +1,6 @@
 package com.microserviceone.users.registrationApi.application.usecase;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 import java.time.LocalDate;

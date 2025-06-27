@@ -21,6 +21,6 @@ import lombok.experimental.SuperBuilder;
 @PrimaryKeyJoinColumn(name = "id")
 public class CustomerEntity extends UserEntity{
 
-    @Column(name = "birth_date", nullable = true)
+    @Column(name = "birth_date", nullable = false)
     private LocalDate birthDate;
 }

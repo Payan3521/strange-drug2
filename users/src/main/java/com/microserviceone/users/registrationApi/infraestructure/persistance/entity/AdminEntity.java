@@ -19,6 +19,6 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @PrimaryKeyJoinColumn(name = "id")
 public class AdminEntity extends UserEntity{
-    @Column(name = "area", nullable = true)
+    @Column(name = "area", nullable = false)
     private String area;
 }

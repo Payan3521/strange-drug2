@@ -2,6 +2,9 @@ package com.microserviceone.users.registrationApi.domain.model;
 
 import java.time.LocalDate;
 import java.util.Objects;
+
+import com.microserviceone.users.registrationApi.domain.exception.AgeIllegalException;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -50,7 +53,7 @@ public class Customer extends User{
 
     private void validateAge(LocalDate birthDate) {
         if (getAge() < MINIMUM_AGE) {
-            throw new IllegalArgumentException("Customer must be at least " + MINIMUM_AGE + " years old");
+            throw new AgeIllegalException(getAge());
         }
     }
 }

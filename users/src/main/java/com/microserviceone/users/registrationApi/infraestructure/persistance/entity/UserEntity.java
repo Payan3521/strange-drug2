@@ -40,7 +40,7 @@ public class UserEntity {
     @Column(name = "password", nullable = false)
     protected String password;
 
-    @Column(name = "phone", nullable = true)
+    @Column(name = "phone", nullable = false)
     protected String phone;
 
     @Column(name = "rol", nullable = false)

@@ -3,7 +3,6 @@ package com.microserviceone.users.registrationApi.application.usecase;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.microserviceone.users.core.logging.LoggingService;
-import com.microserviceone.users.registrationApi.application.exception.PasswordNullOrEmptyException;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -18,7 +17,7 @@ public class PasswordEncripterUseCase {
 
             if (password == null || password.isEmpty()) {
                 loggingService.logError("La contraseña no puede ser nula o vacía para el email: {}", email);
-                throw new PasswordNullOrEmptyException();
+                throw new IllegalArgumentException("Password cannot be null or empty");
             }
 
             loggingService.logInfo("Iniciando encriptación de contraseña para email: {}", email);

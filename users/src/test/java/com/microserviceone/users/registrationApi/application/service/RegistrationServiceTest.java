@@ -60,8 +60,8 @@ public class RegistrationServiceTest {
         savedCustomer.setPassword("hashedPassword");
         savedCustomer.setPhone("3127147814");
         savedCustomer.setBirthDate(LocalDate.of(1990, 11, 11));
-        savedCustomer.setVerifiedCode(false);
-        savedCustomer.setVerifiedTerm(false);
+        savedCustomer.setVerifiedCode(true);
+        savedCustomer.setVerifiedTerm(true);
 
         admin = new Admin();
         admin.setName("admin");
@@ -80,8 +80,8 @@ public class RegistrationServiceTest {
         savedAdmin.setPassword("hashedPassword");
         savedAdmin.setPhone("3127147814");
         savedAdmin.setArea("SISTEMAS");
-        savedAdmin.setVerifiedCode(false);
-        savedAdmin.setVerifiedTerm(false);
+        savedAdmin.setVerifiedCode(true);
+        savedAdmin.setVerifiedTerm(true);
     }
 
     @Test

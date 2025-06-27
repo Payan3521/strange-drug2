@@ -20,7 +20,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import com.microserviceone.users.core.logging.LoggingService;
-import com.microserviceone.users.registrationApi.application.exception.PasswordNullOrEmptyException;
 
 @ExtendWith(MockitoExtension.class)
 public class PasswordEncripterUseCaseTest {
@@ -153,10 +152,10 @@ public class PasswordEncripterUseCaseTest {
     void shouldHandleEmptyPassword(){
         String emptyPassword = "";
 
-        PasswordNullOrEmptyException emptyException = new PasswordNullOrEmptyException();
+        IllegalArgumentException emptyException = new IllegalArgumentException("Password cannot be null or empty");
 
 
-        PasswordNullOrEmptyException exception = assertThrows(PasswordNullOrEmptyException.class, () ->{
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () ->{
             passwordEncripterUseCase.encripter(emptyPassword, TEST_EMAIL);
         });
 
@@ -169,9 +168,9 @@ public class PasswordEncripterUseCaseTest {
 
         String nullPassword = null;
        
-        PasswordNullOrEmptyException nullException = new PasswordNullOrEmptyException();
+        IllegalArgumentException nullException = new IllegalArgumentException("Password cannot be null or empty");
 
-        PasswordNullOrEmptyException exception = assertThrows(PasswordNullOrEmptyException.class,()->{
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,()->{
             passwordEncripterUseCase.encripter(nullPassword, TEST_EMAIL);
         });
 
