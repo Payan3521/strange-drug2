@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.Mockito.doNothing;
@@ -67,8 +68,8 @@ public class SaveCustomerUseCaseTest {
         savedCustomer.setPhone(validCustomer.getPhone());
         savedCustomer.setBirthDate(validCustomer.getBirthDate());
         savedCustomer.setPassword("hashedPassword"); // Simulated encrypted password
-        savedCustomer.setVerifiedCode(false);
-        savedCustomer.setVerifiedTerm(false);
+        savedCustomer.setVerifiedCode(true);
+        savedCustomer.setVerifiedTerm(true);
     }
 
     @Test
@@ -92,6 +93,8 @@ public class SaveCustomerUseCaseTest {
         assertEquals(savedCustomer.getPassword(), result.getPassword());
         assertEquals(validCustomer.getPhone(), result.getPhone());
         assertEquals(savedCustomer.getId(), result.getId());
+        assertTrue(result.isVerifiedCode());
+        assertTrue(result.isVerifiedCode());
         assertNotEquals(passwordActual, result.getPassword());
         
 

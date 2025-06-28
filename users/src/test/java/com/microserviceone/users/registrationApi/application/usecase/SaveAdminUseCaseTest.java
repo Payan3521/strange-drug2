@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.Mockito.doNothing;
@@ -57,6 +58,7 @@ public class SaveAdminUseCaseTest {
         validAdmin.setPhone("3127147814");
         validAdmin.setArea("SISTEMAS");
 
+
         savedAdmin = new Admin();
         savedAdmin.setId(1L);
         savedAdmin.setName(validAdmin.getName());
@@ -65,6 +67,8 @@ public class SaveAdminUseCaseTest {
         savedAdmin.setPhone(validAdmin.getPhone());
         savedAdmin.setArea(validAdmin.getArea());
         savedAdmin.setPassword("hashedPassword");
+        savedAdmin.setVerifiedCode(true);
+        savedAdmin.setVerifiedTerm(true);
 
     }
 
@@ -89,6 +93,8 @@ public class SaveAdminUseCaseTest {
         assertEquals(savedAdmin.getPhone(), result.getPhone());
         assertEquals(savedAdmin.getArea(), result.getArea());
         assertEquals(savedAdmin.getPassword(), result.getPassword());
+        assertTrue(result.isVerifiedCode());
+        assertTrue(result.isVerifiedTerm());
         assertNotEquals(originalPassword, result.getPassword());
 
 
